@@ -24,17 +24,16 @@
 
     <script>
         document.getElementById('activateButton').addEventListener('click', function() {
-            // Replace this with your actual activation code
-            var activationCode = 'LPA:1$tinkoff-con.rsp.a1-systems.com$2E7Cxx4A-1x2D4xx0-AA7xxx45-1ExxAE3x';
-            
-            // Example function to start the eSIM activation process
-            function activateESIM(code) {
-                // Check if navigator.eSIM is available (example for web)
+            // Replace this with your actual SM-DP+ address and activation code
+            var smdpAddress = 'tinkoff-con.rsp.a1-systems.com';
+            var activationCode = '2E7Cxx4A-1x2D4xx0-AA7xxx45-1ExxAE3x';
+
+            // Function to initiate eSIM activation
+            function activateESIM(smdp, code) {
+                // Assuming there's an API or system method to handle eSIM activation
+                // This is a placeholder for actual implementation
                 if (navigator.eSIM) {
-                    navigator.eSIM.downloadProfile(code)
-                        .then(profile => {
-                            return profile.install();
-                        })
+                    navigator.eSIM.activate(smdp, code)
                         .then(() => {
                             alert('eSIM activation successful');
                         })
@@ -47,9 +46,8 @@
                 }
             }
 
-            activateESIM(activationCode);
+            activateESIM(smdpAddress, activationCode);
         });
     </script>
 </body>
 </html>
-
