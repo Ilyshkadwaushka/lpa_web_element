@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activate eSIM</title>
+    <style>
+        #activateButton {
+            font-size: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #activateButton:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Activate eSIM</h1>
+    <button id="activateButton">Activate eSIM</button>
+
+    <script>
+        document.getElementById('activateButton').addEventListener('click', function() {
+            // Replace this with your actual activation code
+            var activationCode = 'LPA:1$tinkoff-con.rsp.a1-systems.com$2E7Cxx4A-1x2D4xx0-AA7xxx45-1ExxAE3x';
+            
+            // Example function to start the eSIM activation process
+            function activateESIM(code) {
+                // Check if navigator.eSIM is available (example for web)
+                if (navigator.eSIM) {
+                    navigator.eSIM.downloadProfile(code)
+                        .then(profile => {
+                            return profile.install();
+                        })
+                        .then(() => {
+                            alert('eSIM activation successful');
+                        })
+                        .catch(error => {
+                            console.error('eSIM activation failed:', error);
+                            alert('eSIM activation failed');
+                        });
+                } else {
+                    alert('eSIM activation not supported on this device');
+                }
+            }
+
+            activateESIM(activationCode);
+        });
+    </script>
+</body>
+</html>
+
